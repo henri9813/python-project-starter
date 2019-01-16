@@ -1,10 +1,8 @@
 #!/usr/bin/python
 """
-    tar-progress: monitor tool for tar process
+    python-starter: easy package creator
 """
-import platform
 import argparse
-from tar_progress.classes import interface, linux, windows
 
 
 def main():
@@ -14,7 +12,7 @@ def main():
     parser = argparse.ArgumentParser(description='python-starter by Henri Devigne')
     arguments = parser.parse_args()
 
-    print(arguments)
+    return arguments
 
 
 if __name__ == '__main__':
