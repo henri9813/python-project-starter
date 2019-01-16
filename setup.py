@@ -20,7 +20,7 @@ def package_files(directory):
     paths = []
     for (path, _, filenames) in os.walk(directory):
         for filename in filenames:
-            paths.append(path.join('..', path, filename))
+            paths.append(os.path.join('..', path, filename))
     return paths
 
 
@@ -32,7 +32,7 @@ setup(
     author='Henri Devigne',
     author_email='henri.devigne@bonkgaming.fr',
     url='https://github.com/henri9813/python-project-starter',
-    version='1.0',
+    version='1.1',
     description="This package permit you to easily create a new project",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
