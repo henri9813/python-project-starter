@@ -18,6 +18,11 @@ def main():
                         type=str,
                         help="Path where the project will be create",
                         default=".")
+    parser.add_argument('-n', '--name',
+                        action="store",
+                        type=str,
+                        help="Name of the project",
+                        default=None)
     parser.add_argument('-v', '--verbose',
                         action="store_true",
                         help="Enable verbosity",
@@ -36,6 +41,14 @@ def main():
     except OSError:
         print("Unable to create project in: " + arguments.path)
         return -1
+
+    module_directory = os.path.basename(arguments.path) if not arguments.name else arguments.name
+
+    os.rename(
+        arguments.path + "/my_project",
+        arguments.path + "/" + module_directory
+    )
+
     return 0
 
 
