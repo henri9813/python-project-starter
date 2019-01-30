@@ -32,7 +32,7 @@ setup(
     author='Henri Devigne',
     author_email='henri.devigne@bonkgaming.fr',
     url='https://github.com/henri9813/python-project-starter',
-    version='1.2',
+    version='1.3',
     description="This package permit you to easily create a new project",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
