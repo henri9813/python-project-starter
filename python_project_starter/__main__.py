@@ -35,8 +35,9 @@ def main():
         # pylint: disable=C0321
         if arguments.verbose: print("Cloning template into: " + arguments.path)
         shutil.copytree(
-            os.path.dirname(os.path.realpath(__file__)) + "/template",
-            arguments.path
+            src=os.path.dirname(os.path.realpath(__file__)) + "/template",
+            dst=arguments.path,
+            ignore=shutil.ignore_patterns("*.pyc")
         )
     except OSError:
         print("Unable to create project in: " + arguments.path)
