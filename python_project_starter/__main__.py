@@ -50,10 +50,10 @@ def main():
         module_path
     )
 
-    for directory, _, files in os.walk(arguments.path):
-        for file in files:
+    for directory, _, file_names in os.walk(arguments.path):
+        for file_name in file_names:
             replace_in_file(
-                path=os.path.abspath(os.path.join(directory, file)),
+                path=os.path.abspath(os.path.join(directory, file_name)),
                 search="my_project",
                 replace=module_directory_name
             )
@@ -72,13 +72,14 @@ def replace_in_file(path, search, replace):
     :type replace: str
     :return: None
     """
-    file = open(path, "r")
-    data = file.read().replace(search, replace)
-    file.close()
+    raw = open(path, "r")
+    data = raw.read().replace(search, replace)
+    raw.close()
 
-    file = open(path, 'w')
-    file.write(data)
-    file.close()
+    raw = open(path, 'w')
+    raw.write(data)
+    raw.close()
+
 
 if __name__ == '__main__':
     main()
