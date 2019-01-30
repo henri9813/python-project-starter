@@ -42,15 +42,43 @@ def main():
         print("Unable to create project in: " + arguments.path)
         return -1
 
-    module_directory = os.path.basename(arguments.path) if not arguments.name else arguments.name
+    module_directory_name = arguments.name if arguments.name else os.path.basename(arguments.path)
+    module_path = arguments.path + "/" + module_directory_name
 
     os.rename(
         arguments.path + "/my_project",
-        arguments.path + "/" + module_directory
+        module_path
     )
+
+    for directory, _, files in os.walk(arguments.path):
+        for file in files:
+            replace_in_file(
+                path=os.path.abspath(os.path.join(directory, file)),
+                search="my_project",
+                replace=module_directory_name
+            )
 
     return 0
 
+
+def replace_in_file(path, search, replace):
+    """
+    Replace a string per another in a file
+    :param path: path of the file
+    :type path: str
+    :param search: string to replace
+    :type search: str
+    :param replace: replacement string
+    :type replace: str
+    :return: None
+    """
+    file = open(path, "r")
+    data = file.read().replace(search, replace)
+    file.close()
+
+    file = open(path, 'w')
+    file.write(data)
+    file.close()
 
 if __name__ == '__main__':
     main()
