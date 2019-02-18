@@ -1,4 +1,4 @@
-# python-project-starter
+![alt text](doc/logo/python-project-starter.png "Python-Project-Starter")
 
 This package permit you to easily create a new project using package template.
 
